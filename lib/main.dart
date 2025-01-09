@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/generated/l10n.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/songs_list_screen.dart';
+import 'package:flutter_application_1/ui/navigation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Permission.storage.request();
-  // await Permission.photos.request();
-  // await Permission.videos.request();
-  // await Permission.audio.request();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static final mainNavigation = MainNavigation();
 
   // This widget is the root of your application.
   @override
@@ -32,7 +29,9 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: SongsListScreen(),
+      routes: mainNavigation.routes,
+      onGenerateRoute: mainNavigation.onGenerateRoute,
+      initialRoute: MainNavigationRoutesNames.splashScreen,
     );
   }
 }

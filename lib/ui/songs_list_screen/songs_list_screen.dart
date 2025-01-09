@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/widget/MusicList.dart';
+import 'package:flutter_application_1/ui/songs_list_screen/widget/music_list.dart';
+import 'package:flutter_application_1/ui/songs_list_screen/widget/play_lists.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class SongsListScreen extends StatefulWidget {
-  const SongsListScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<SongsListScreen> createState() => _SongsListScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _SongsListScreenState extends State<SongsListScreen> {
+class _HomePageState extends State<HomePage> {
   final OnAudioQuery _audioQuery = OnAudioQuery();
 
   @override
   void initState() {
     super.initState();
-    requestPermission();
+    // requestPermission();
   }
 
   Future<bool> requestPermission() async {
@@ -48,7 +49,7 @@ class _SongsListScreenState extends State<SongsListScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 5,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -151,6 +152,9 @@ class _SongsListScreenState extends State<SongsListScreen> {
                   ),
                   TabBar(
                       isScrollable: true,
+                      unselectedLabelColor: Colors.white.withAlpha(128),
+                      labelColor: Colors.white.withAlpha(128),
+                      unselectedLabelStyle: TextStyle(fontSize: 18),
                       labelStyle: TextStyle(fontSize: 18),
                       indicator: BoxDecoration(
                           border: Border(
@@ -169,7 +173,7 @@ class _SongsListScreenState extends State<SongsListScreen> {
                       flex: 1,
                       child: TabBarView(children: [
                         MusicList(),
-                        Container(),
+                        PlayLists(),
                         Container(),
                         Container(),
                         Container(),
