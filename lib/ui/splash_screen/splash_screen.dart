@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -18,26 +19,13 @@ class _SplashScreenState extends State<SplashScreen>
   final _mainNavigation = MainNavigation();
   bool _isGrantedStoragePermission = false;
   final OnAudioQuery _audioQuery = OnAudioQuery();
-  late AnimationController _animationController;
-  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    );
 
-    _animation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(_animationController);
-
-    _animationController.forward();
-
-    Timer(const Duration(seconds: 2, milliseconds: 500), () async {
-      await _initializeApp();
+    Timer(const Duration(seconds: 1, milliseconds: 500), () async {
+      // await _initializeApp();
       if (mounted) {
         Navigator.of(context).pushNamedAndRemoveUntil(
             _mainNavigation.initialRoute(), (route) => false);
@@ -46,11 +34,18 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _initializeApp() async {
-    await _requestPermissionStorage();
-    if (_isGrantedStoragePermission) await _preloadData();
+    try {
+      _isGrantedStoragePermission = await _requestPermissionStorage();
+      if (_isGrantedStoragePermission) {
+        log('Storage permission granted, loading data...');
+        // await _preloadData();
+      }
+    } catch (e) {
+      log("Error of fetching data: $e");
+    }
   }
 
-  Future<void> _requestPermissionStorage() async {
+  Future<bool> _requestPermissionStorage() async {
     AndroidDeviceInfo build = await DeviceInfoPlugin().androidInfo;
     Permission permission = Permission.storage;
 
@@ -58,10 +53,10 @@ class _SplashScreenState extends State<SplashScreen>
       var request = await Permission.manageExternalStorage.request();
       if (request.isGranted) {
         // Продолжить загрузку приложения
-        _isGrantedStoragePermission = true;
+        // _isGrantedStoragePermission = true;
+        return true;
       } else {
         // Отказ в доступе к памяти
-        _isGrantedStoragePermission = false;
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -69,19 +64,23 @@ class _SplashScreenState extends State<SplashScreen>
                     Text('Storage permission is required to access songs.')),
           );
         }
+        // _isGrantedStoragePermission = false;
+        return false;
       }
     } else {
       if (await permission.isGranted) {
         // Продолжить загрузку приложения
-        _isGrantedStoragePermission = true;
+        // _isGrantedStoragePermission = true;
+        return true;
       } else {
         var result = await permission.request();
         if (result.isGranted) {
           // Продолжить загрузку приложения
-          _isGrantedStoragePermission = true;
+          // _isGrantedStoragePermission = true;
+          return true;
         } else {
           // Отказ в доступе к памяти
-          _isGrantedStoragePermission = false;
+          // _isGrantedStoragePermission = false;
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -89,6 +88,7 @@ class _SplashScreenState extends State<SplashScreen>
                       Text('Storage permission is required to access songs.')),
             );
           }
+          return false;
         }
       }
     }
@@ -109,29 +109,18 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: AnimatedOpacity(
-          opacity: _animation.value,
-          duration: Duration(seconds: 2),
           child: Text(
-            'FPlay',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue,
-            ),
-          ),
+        'FPlay',
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.blue,
         ),
-      ),
+      )),
     );
   }
 }

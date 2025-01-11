@@ -38,7 +38,7 @@ class PlayLists extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Dua Lipa",
+                        "Future Nostalgia",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
