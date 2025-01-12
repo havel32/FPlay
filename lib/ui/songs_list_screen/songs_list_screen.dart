@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.transparent,
             body: SafeArea(
                 child: Padding(
-                    padding: EdgeInsets.only(top: 20, left: 22),
+                    padding: const EdgeInsets.only(top: 20, left: 22),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

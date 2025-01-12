@@ -11,10 +11,10 @@ class PlayLists extends StatelessWidget {
         children: [
           for (int i = 1; i < 10; i++)
             Container(
-              margin: EdgeInsets.only(top: 20, right: 20, left: 5),
-              padding: EdgeInsets.all(15),
+              margin: const EdgeInsets.only(top: 20, right: 20, left: 5),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  color: Color(0xFF30314d),
+                  color: const Color(0xFF30314d),
                   borderRadius: BorderRadius.circular(15)),
               child: Row(
                 children: [
@@ -31,18 +31,18 @@ class PlayLists extends StatelessWidget {
                         child: Image.asset('assets/duaLipa.webp',
                             fit: BoxFit.cover, height: 60, width: 60),
                       )),
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Future Nostalgia",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.w400),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text("12 songs",
                           style: TextStyle(
                             color: Colors.white.withAlpha(128),
@@ -50,7 +50,7 @@ class PlayLists extends StatelessWidget {
                           )),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                       onTap: () {
                         // TODO: play list more

@@ -7,7 +7,7 @@ class MusicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
             "assets/duaLipa.webp",
@@ -25,18 +25,19 @@ class MusicPage extends StatelessWidget {
                     colors: [
                   Colors.black.withAlpha(88),
                   Colors.black.withAlpha(128),
-                  Color(0xFF13114F).withAlpha(200),
-                  Color(0xFF13114F).withAlpha(245),
-                  Color(0xFF13114F).withAlpha(255),
-                  Color(0xFF13114F).withAlpha(255),
+                  const Color(0xFF13114F).withAlpha(200),
+                  const Color(0xFF13114F).withAlpha(245),
+                  const Color(0xFF13114F).withAlpha(255),
+                  const Color(0xFF13114F).withAlpha(255),
                 ])),
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 45, horizontal: 25),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 45, horizontal: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
