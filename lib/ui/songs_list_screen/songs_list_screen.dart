@@ -71,21 +71,14 @@ class _HomePageState extends State<HomePage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF303151).withAlpha(140),
+                  Color(0xFF303151).withAlpha(150),
+                  // Color(0xFF303151).withAlpha(200),
+                  // Colors.cyan.withAlpha(180),
                   Colors.cyan.withAlpha(235)
                 ]),
           ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
-            // appBar: AppBar(
-            //   title: const Text('Songs List'),
-            //   actions: [
-            //     IconButton(
-            //       icon: Icon(Icons.search),
-            //       onPressed: () {},
-            //     ),
-            //   ],
-            // ),
             body: SafeArea(
                 child: Padding(
                     padding: EdgeInsets.only(top: 20, left: 22),
@@ -101,6 +94,7 @@ class _HomePageState extends State<HomePage> {
                                   onTap: () {
                                     // TODO: Implement search functionality
                                   },
+                                  borderRadius: BorderRadius.circular(10),
                                   child: Icon(
                                     Icons.sort_rounded,
                                     color: Color(0xFF8999CCF),
@@ -114,9 +108,9 @@ class _HomePageState extends State<HomePage> {
                           Padding(
                               padding: EdgeInsets.only(bottom: 5),
                               child: Text(
-                                "Hello Sir",
+                                "Audio Section",
                                 style: TextStyle(
-                                    color: Colors.white.withAlpha(240),
+                                    color: Colors.white.withAlpha(230),
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold,
                                     letterSpacing: 1),
@@ -132,18 +126,18 @@ class _HomePageState extends State<HomePage> {
                           //   },
                           //   child: Text('click'),
                           // ),
-                          Padding(
-                              padding: EdgeInsets.only(bottom: 5),
-                              child: Text(
-                                "What do you want to hear sir?",
-                                style: TextStyle(
-                                  color: Colors.white.withAlpha(240),
-                                  fontSize: 16,
-                                ),
-                              )),
+                          // Padding(
+                          //     padding: EdgeInsets.only(bottom: 5),
+                          //     child: Text(
+                          //       "What do you want to hear sir?",
+                          //       style: TextStyle(
+                          //         color: Colors.white.withAlpha(240),
+                          //         fontSize: 16,
+                          //       ),
+                          //     )),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 15, right: 20, bottom: 20),
+                                EdgeInsets.only(top: 30, right: 20, bottom: 20),
                             child: Container(
                               height: 50,
                               width: 380,
@@ -193,6 +187,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 3,
                                 color: Color(0xFF8999CCF),
                               ))),
+                              // labelPadding: EdgeInsets.only(left: 20),
                               tabs: [
                                 Tab(text: 'Songs'),
                                 Tab(text: 'Playlists'),

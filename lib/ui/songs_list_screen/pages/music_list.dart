@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/ui/navigation.dart';
 
 class MusicList extends StatelessWidget {
   const MusicList({super.key});
@@ -9,13 +10,13 @@ class MusicList extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 15),
-          for (int i = 0; i < 10; i++)
+          for (int i = 1; i < 20; i++)
             Container(
               margin: EdgeInsets.only(top: 15, left: 5, right: 12),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               decoration: BoxDecoration(
-                color: Color(0xFF30314D),
-              ),
+                  color: Color(0xFF30314D),
+                  borderRadius: BorderRadius.circular(15)),
               child: Row(
                 children: [
                   Text(
@@ -30,6 +31,8 @@ class MusicList extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       //TODO navigation to music page
+                      Navigator.of(context)
+                          .pushNamed(MainNavigationRoutesNames.musicPage);
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,24 +53,26 @@ class MusicList extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                        SizedBox(height: 2),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Bass",
-                              style: TextStyle(
-                                color: Colors.white.withAlpha(230),
-                                fontSize: 16,
-                              ),
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              "-",
-                              style: TextStyle(
-                                color: Colors.white.withAlpha(150),
-                                fontSize: 25,
-                              ),
-                            ),
-                            SizedBox(width: 5),
+                            // Text(
+                            //   "Bass",
+                            //   style: TextStyle(
+                            //     color: Colors.white.withAlpha(230),
+                            //     fontSize: 16,
+                            //   ),
+                            // ),
+                            // SizedBox(width: 5),
+                            // Text(
+                            //   "-",
+                            //   style: TextStyle(
+                            //     color: Colors.white.withAlpha(150),
+                            //     fontSize: 25,
+                            //   ),
+                            // ),
+                            // SizedBox(width: 5),
                             Text(
                               "4:30",
                               style: TextStyle(
