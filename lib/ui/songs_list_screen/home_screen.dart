@@ -1,64 +1,23 @@
-import 'dart:developer';
-
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/model_home_screen.dart';
 import 'package:flutter_application_1/ui/songs_list_screen/pages/music_list.dart';
 import 'package:flutter_application_1/ui/songs_list_screen/pages/play_lists.dart';
-import 'package:on_audio_query/on_audio_query.dart';
-import 'package:permission_handler/permission_handler.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final OnAudioQuery _audioQuery = OnAudioQuery();
+class _HomeScreenState extends State<HomeScreen> {
+  final screenModel = ModelHomeScreen();
   late Future<bool> _hasPermission;
+
   @override
   void initState() {
     super.initState();
-    // requestPermission();
-    _hasPermission = _requestPermission(Permission.storage);
-  }
-
-  Future<List<SongModel>> fetchSongs() async {
-    try {
-      return await _audioQuery.querySongs(
-        sortType: null,
-        orderType: OrderType.ASC_OR_SMALLER,
-        uriType: UriType.EXTERNAL,
-        ignoreCase: true,
-      );
-    } catch (e) {
-      print('Error fetching songs: $e');
-      return [];
-    }
-  }
-
-  Future<bool> _requestPermission(Permission permission) async {
-    AndroidDeviceInfo build = await DeviceInfoPlugin().androidInfo;
-    if (build.version.sdkInt >= 30) {
-      var re = await Permission.manageExternalStorage.request();
-      if (re.isGranted) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      if (await permission.isGranted) {
-        return true;
-      } else {
-        var result = await permission.request();
-        if (result.isGranted) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }
+    _hasPermission = screenModel.isGrantedAccessToStorage();
   }
 
   @override
@@ -71,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF303151).withAlpha(150),
+                  const Color(0xFF303151).withAlpha(150),
                   // Color(0xFF303151).withAlpha(200),
                   // Colors.cyan.withAlpha(180),
                   Colors.cyan.withAlpha(235)
@@ -86,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(right: 15),
+                            padding: const EdgeInsets.only(right: 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -95,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                                     // TODO: Implement search functionality
                                   },
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.sort_rounded,
                                     color: Color(0xFF8999CCF),
                                     size: 30,
@@ -104,9 +63,9 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Padding(
-                              padding: EdgeInsets.only(bottom: 5),
+                              padding: const EdgeInsets.only(bottom: 5),
                               child: Text(
                                 "Audio Section",
                                 style: TextStyle(
@@ -115,34 +74,14 @@ class _HomePageState extends State<HomePage> {
                                     fontWeight: FontWeight.bold,
                                     letterSpacing: 1),
                               )),
-                          // ElevatedButton(
-                          //   onPressed: () async {
-                          //     if (await _requestPermission(Permission.storage) ==
-                          //         true) {
-                          //       log("Permission is granted");
-                          //     } else {
-                          //       log("permission is not granted");
-                          //     }
-                          //   },
-                          //   child: Text('click'),
-                          // ),
-                          // Padding(
-                          //     padding: EdgeInsets.only(bottom: 5),
-                          //     child: Text(
-                          //       "What do you want to hear sir?",
-                          //       style: TextStyle(
-                          //         color: Colors.white.withAlpha(240),
-                          //         fontSize: 16,
-                          //       ),
-                          //     )),
                           Padding(
-                            padding:
-                                EdgeInsets.only(top: 30, right: 20, bottom: 20),
+                            padding: const EdgeInsets.only(
+                                top: 30, right: 20, bottom: 20),
                             child: Container(
                               height: 50,
                               width: 380,
                               decoration: BoxDecoration(
-                                color: Color(0xFF31314F),
+                                color: const Color(0xFF31314F),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Row(
@@ -150,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 15),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 15),
                                     height: 50,
                                     width: 200,
                                     child: TextFormField(
@@ -165,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
                                     child: Icon(Icons.search,
                                         size: 30,
                                         color: Colors.white.withAlpha(128)),
@@ -179,16 +118,17 @@ class _HomePageState extends State<HomePage> {
                               isScrollable: true,
                               unselectedLabelColor: Colors.white.withAlpha(128),
                               labelColor: Colors.white.withAlpha(128),
-                              unselectedLabelStyle: TextStyle(fontSize: 18),
-                              labelStyle: TextStyle(fontSize: 18),
-                              indicator: BoxDecoration(
+                              unselectedLabelStyle:
+                                  const TextStyle(fontSize: 18),
+                              labelStyle: const TextStyle(fontSize: 18),
+                              indicator: const BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
                                 width: 3,
                                 color: Color(0xFF8999CCF),
                               ))),
                               // labelPadding: EdgeInsets.only(left: 20),
-                              tabs: [
+                              tabs: const [
                                 Tab(text: 'Songs'),
                                 Tab(text: 'Playlists'),
                                 Tab(text: 'Albums'),
@@ -204,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(height: 60),
+                                      const SizedBox(height: 60),
                                       Text(
                                         'Checking permission...',
                                         style: TextStyle(
@@ -212,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                                           color: Colors.white.withAlpha(128),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       CircularProgressIndicator(
@@ -226,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(height: 40),
+                                      const SizedBox(height: 40),
                                       Text(
                                         'Error: ${snapshot.error}',
                                         maxLines: 3,
@@ -240,13 +180,13 @@ class _HomePageState extends State<HomePage> {
                                     flex: 1,
                                     child: TabBarView(children: [
                                       MusicList(),
-                                      PlayLists(),
+                                      const PlayLists(),
                                       Container(),
                                       Container(),
                                       Container(),
                                     ]));
                               } else {
-                                return Container(); // Add this line to handle the case when snapshot.data is not true or null
+                                return Container();
                               }
                             },
                           ),

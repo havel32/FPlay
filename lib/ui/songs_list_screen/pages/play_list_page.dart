@@ -13,8 +13,8 @@ class PlayListPage extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xFF303151).withAlpha(135),
-            Color(0xFF303151).withAlpha(240)
+            const Color(0xFF303151).withAlpha(135),
+            const Color(0xFF303151).withAlpha(240)
           ],
         ),
       ),
@@ -25,7 +25,8 @@ class PlayListPage extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -33,7 +34,7 @@ class PlayListPage extends StatelessWidget {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               CupertinoIcons.back,
                               color: Color(0xFF899CCF),
                               size: 30,
@@ -42,7 +43,7 @@ class PlayListPage extends StatelessWidget {
                             onTap: () {
                               //TODO
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.more_vert,
                               color: Color(0xFF899CCF),
                               size: 30,
@@ -50,7 +51,7 @@ class PlayListPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ClipRRect(
@@ -62,7 +63,7 @@ class PlayListPage extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Column(
@@ -75,7 +76,7 @@ class PlayListPage extends StatelessWidget {
                           color: Colors.white.withAlpha(245),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Text(
@@ -87,7 +88,7 @@ class PlayListPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
@@ -102,7 +103,7 @@ class PlayListPage extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -128,7 +129,7 @@ class PlayListPage extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -146,26 +147,27 @@ class PlayListPage extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   for (int i = 1; i < 20; i++)
                     Container(
-                      margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      margin:
+                          const EdgeInsets.only(top: 15, left: 15, right: 15),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
                       decoration: BoxDecoration(
-                          color: Color(0xFF30314D),
+                          color: const Color(0xFF30314D),
                           borderRadius: BorderRadius.circular(15)),
                       child: Row(
                         children: [
                           Text(
                             i.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          SizedBox(width: 25),
+                          const SizedBox(width: 25),
                           InkWell(
                             onTap: () {
                               //TODO navigation to music page
@@ -175,7 +177,7 @@ class PlayListPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Song Title',
                                   style: TextStyle(
                                     fontSize: 17,
@@ -183,15 +185,15 @@ class PlayListPage extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                 ),
-                                SizedBox(height: 5),
-                                Text(
+                                const SizedBox(height: 5),
+                                const Text(
                                   'Artist',
                                   style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.white,
                                   ),
                                 ),
-                                SizedBox(height: 2),
+                                const SizedBox(height: 2),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -222,7 +224,7 @@ class PlayListPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                             height: 35,
                             width: 35,
@@ -230,7 +232,7 @@ class PlayListPage extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.play_arrow,
                               color: Color(0xFF31314F),
                               size: 25,

@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen>
         // Отказ в доступе к памяти
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
                 content:
                     Text('Storage permission is required to access songs.')),
           );
@@ -83,7 +83,7 @@ class _SplashScreenState extends State<SplashScreen>
           // _isGrantedStoragePermission = false;
           if (mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                   content:
                       Text('Storage permission is required to access songs.')),
             );
@@ -110,7 +110,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
           child: Text(

@@ -45,26 +45,26 @@ class MusicPage extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Icon(CupertinoIcons.back,
+                          child: const Icon(CupertinoIcons.back,
                               color: Colors.white, size: 30),
                         ),
                         InkWell(
                           onTap: () {},
-                          child: Icon(Icons.more_vert,
+                          child: const Icon(Icons.more_vert,
                               color: Colors.white, size: 30),
                         ),
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 2.5,
                     child: Column(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Padding(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               vertical: 23, horizontal: 20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +80,7 @@ class MusicPage extends StatelessWidget {
                                       color: Colors.white.withAlpha(240),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Text(
@@ -105,7 +105,7 @@ class MusicPage extends StatelessWidget {
                             inactiveColor: Colors.white54,
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -128,7 +128,7 @@ class MusicPage extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Padding(
@@ -153,7 +153,7 @@ class MusicPage extends StatelessWidget {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.play_arrow,
                                 color: Color(0xFF31314F),
                                 size: 40,
