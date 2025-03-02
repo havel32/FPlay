@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/model_home_screen.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/pages/music_list.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/pages/play_lists.dart';
+import 'package:flutter_application_1/presentation/ui/songs_list_screen/pages/music_list.dart';
+import 'package:flutter_application_1/presentation/ui/songs_list_screen/pages/play_lists.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final screenModel = ModelHomeScreen();
-  late Future<bool> _hasPermission;
-
-  @override
-  void initState() {
-    super.initState();
-    _hasPermission = screenModel.isGrantedAccessToStorage();
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -135,61 +119,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Tab(text: 'Collections'),
                                 Tab(text: 'Favorites'),
                               ]),
-                          FutureBuilder<bool>(
-                            future: _hasPermission,
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting) {
-                                return Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 60),
-                                      Text(
-                                        'Checking permission...',
-                                        style: TextStyle(
-                                          fontSize: 24,
-                                          color: Colors.white.withAlpha(128),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      CircularProgressIndicator(
-                                        color: Colors.white.withAlpha(128),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              } else if (snapshot.hasError) {
-                                return Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 40),
-                                      Text(
-                                        'Error: ${snapshot.error}',
-                                        maxLines: 3,
-                                      )
-                                    ],
-                                  ),
-                                );
-                              } else if (snapshot.hasData &&
-                                  snapshot.data == true) {
-                                return Flexible(
-                                    flex: 1,
-                                    child: TabBarView(children: [
-                                      MusicList(),
-                                      const PlayLists(),
-                                      Container(),
-                                      Container(),
-                                      Container(),
-                                    ]));
-                              } else {
-                                return Container();
-                              }
-                            },
-                          ),
+                          Flexible(
+                              flex: 1,
+                              child: TabBarView(children: [
+                                MusicList(),
+                                const PlayLists(),
+                                Container(),
+                                Container(),
+                                Container(),
+                              ]))
                         ]))),
           ),
         ));
