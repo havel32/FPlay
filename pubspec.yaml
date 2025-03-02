@@ -41,6 +41,9 @@ flutter:
   generate: true
   assets:
   - assets/duaLipa.webp
+  - assets/fonts
+  - assets/images
+  - assets/vectors
 
   uses-material-design: true
 
