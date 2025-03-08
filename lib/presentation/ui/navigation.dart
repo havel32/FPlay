@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/pages/music_page.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/pages/play_list_page.dart';
-import 'package:flutter_application_1/ui/songs_list_screen/home_screen.dart';
-import 'package:flutter_application_1/ui/splash_screen/splash_screen.dart';
+import 'package:flutter_application_1/presentation/ui/songs_list_screen/pages/music_page.dart';
+import 'package:flutter_application_1/presentation/ui/songs_list_screen/pages/play_list_page.dart';
+import 'package:flutter_application_1/presentation/ui/songs_list_screen/home_screen.dart';
+import 'package:flutter_application_1/presentation/splash/pages/splash.dart';
 
 abstract class MainNavigationRoutesNames {
   static const String home = 'home';

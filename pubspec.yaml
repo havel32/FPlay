@@ -27,6 +27,7 @@ dependencies:
   permission_handler: ^11.3.1
   get_it: ^8.0.3
   rename: ^3.0.2
+  flutter_svg: ^2.0.17
   # simple_animations: ^5.1.0
 
 dev_dependencies:
@@ -37,13 +38,13 @@ dev_dependencies:
 
 
 
+
 flutter:
   generate: true
   assets:
-  - assets/duaLipa.webp
-  - assets/fonts
-  - assets/images
-  - assets/vectors
+  - assets/fonts/
+  - assets/images/
+  - assets/vectors/
 
   uses-material-design: true
 

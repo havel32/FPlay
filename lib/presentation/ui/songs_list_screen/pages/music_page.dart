@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/configs/assets/app_vectors.dart';
+
 class MusicPage extends StatelessWidget {
   const MusicPage({super.key});
 
@@ -10,7 +12,7 @@ class MusicPage extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            "assets/duaLipa.webp",
+            AppVectors.duaLipa,
           ),
           fit: BoxFit.cover,
         ),

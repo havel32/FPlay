@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/navigation.dart';
+import 'package:flutter_application_1/core/configs/assets/app_vectors.dart';
+import 'package:flutter_application_1/presentation/ui/navigation.dart';
 
 class PlayListPage extends StatelessWidget {
   const PlayListPage({super.key});
@@ -57,7 +58,7 @@ class PlayListPage extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
-                      'assets/duaLipa.webp',
+                      AppVectors.duaLipa,
                       width: 250,
                       height: 260,
                       fit: BoxFit.cover,
