@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/configs/assets/app_vectors.dart';
-import 'package:flutter_application_1/presentation/ui/navigation.dart';
+import 'package:f_play/core/configs/assets/app_vectors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../routes/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,8 +15,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  final _mainNavigation = MainNavigation();
-
   @override
   void initState() {
     super.initState();
@@ -23,19 +23,23 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> redirect() async {
     await Future.delayed(const Duration(seconds: 2));
-    if (mounted) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          _mainNavigation.initialRoute(), (route) => false);
+    if (context.mounted) {
+      context.goNamed(MainNavigationRoutesNames.getStartedPage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [SvgPicture.asset(AppVectors.logo), const Text('FPlay')],
-        ),
+      body: Stack(
+        children: [
+          Align(
+              alignment: Alignment.center,
+              child: SvgPicture.asset(
+                AppVectors.logo,
+                width: 150,
+              ))
+        ],
       ),
     );
   }

@@ -1,9 +1,10 @@
 class AppVectors {
-  static const String basePath = 'assets/images/';
+  static const String basePath = 'assets/vectors/';
 
-  static const String format = '.webp';
-  static const String svgFormat = '.svg';
 
-  static const String duaLipa = '${basePath}duaLipa$format';
-  static const String logo = '${basePath}logo$svgFormat';
+  static const String format = '.svg';
+  static const String logoText = '${basePath}FPlay$format';
+  static const String logo = '${basePath}logo$format';
+  static const String moon = '${basePath}Moon$format';
+  static const String sun = '${basePath}Sun$format';
 }
